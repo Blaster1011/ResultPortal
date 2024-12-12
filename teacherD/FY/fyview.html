@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="fyview.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="fyview.css" rel="stylesheet">
+
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col">
+    <!-- Header -->
+    <header class="w-full bg-blue-600 text-white p-6 rounded-b-lg shadow-lg mb-10">
+        <div class="container mx-auto">
+            <h1 class="text-2xl md:text-3xl font-bold text-center">
+                First Year Dashboard
+            </h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Results Card -->
+            <div onclick="location.href='Result.html'" 
+     class="neumorphic bg-white rounded-2xl p-6 cursor-pointer">
+    <div class="flex flex-col items-center text-center">
+        <i class="bi bi-bar-chart-line-fill text-4xl text-blue-600 mb-4"></i>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Results</h2>
+        <p class="text-gray-600">View and manage student results</p>
+        <button class="mt-4 text-blue-600 hover:text-blue-800">
+            <i class="bi bi-arrow-right text-xl"></i>
+        </button>
+    </div>
+</div>
+
+            <!-- Attendance Card -->
+<div onclick="location.href='Attendance.html'" 
+     class="neumorphic bg-white rounded-2xl p-6 cursor-pointer">
+    <div class="flex flex-col items-center text-center">
+        <i class="bi bi-calendar-check text-4xl text-blue-600 mb-4"></i>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Attendance</h2>
+        <p class="text-gray-600">Mark attendance for each student</p>
+        <button class="mt-4 text-blue-600 hover:text-blue-800">
+            <i class="bi bi-arrow-right text-xl"></i>
+        </button>
+    </div>
+</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-6 shadow-inner">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-gray-600 text-sm">
+                © 2024 Student Tracking System. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

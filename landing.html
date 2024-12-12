@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Tracking System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="landing.css" rel="stylesheet">
+    <script src="landing.js" defer></script>
+   
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex flex-col items-center justify-center text-center">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                <img src="assets/DBATU.jpg" alt="University Logo" class="w-20 h-20">
+                <div class="text-gray-800">
+                    <h1 class="text-lg md:text-xl font-semibold">Dr Babasaheb Ambedkar Technological University, Lonere</h1>
+                    <p class="text-sm md:text-base">Department of Information Technology, Diploma</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Title -->
+    <div class="text-center py-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Student Performance Tracking System</h2>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 flex flex-col md:flex-row gap-6">
+        <!-- Sidebar -->
+        <div class="md:w-1/7">
+            <nav class="bg-white shadow-lg rounded-lg p-4">
+                <button id="menuBtn" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">
+                    <i class="bi bi-list mr-2"></i> Login
+                </button>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">
+                    <i class="bi bi-info-circle mr-2"></i> About Department
+                </a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">
+                    <i class="bi bi-person-badge mr-2"></i> HOD
+                </a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">
+                    <i class="bi bi-people mr-2"></i> Staff
+                </a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">
+                    <i class="bi bi-book mr-2"></i> Curriculum
+                </a>
+            </nav>
+
+            <!-- Menu Popup -->
+            <div id="menuPopup" class="menu-popup absolute left-4 mt-2 bg-white shadow-xl rounded-lg p-4 z-50">
+                <div class="text-center mb-4">
+                    <i class="bi bi-house-door text-2xl text-gray-600"></i>
+                </div>
+                <div class="space-y-2">
+                    <button class="w-full px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors" onclick="location.href='Student/studentlogin.html'">Student</button>
+                    <button class="w-full px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors" onclick="location.href='Parent/parentlogin.html'">Parent</button>
+                    <button class="w-full px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors" onclick="location.href='teacherD/teacherlogin.html'">Staff</button>
+                    <button class="w-full px-4 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors" onclick="location.href='#'">Admin</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Slider -->
+        <div class="md:w-3/4">
+            <div class="relative bg-white rounded-lg shadow-lg p-4 h-[400px]">
+                <div id="slider" class="w-full h-full relative">
+                    <div class="slide active">
+                        <img src="assets/DBATU_Front.jpg" class="w-full h-full object-cover rounded" alt="University Campus">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/College.jpg" class="w-full h-full object-cover rounded" alt="Students Learning">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3" class="w-full h-full object-cover rounded" alt="Library">
+                    </div>
+                </div>
+                <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full" onclick="prevSlide()">
+                    <i class="bi bi-chevron-left text-xl"></i>
+                </button>
+                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-full" onclick="nextSlide()">
+                    <i class="bi bi-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+  
+</body>
+</html>

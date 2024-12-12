@@ -7,24 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="StDashboard.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="StDashboard.js"></script>
 </head>
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: #f8fafc;
-    }
-    .dashboard-card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(209, 213, 219, 0.3);
-    }
-    .chart-container {
-        position: relative;
-        height: 200px;
-        width: 100%;
-    }
-</style>
+
 <body class="bg-gray-50">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
@@ -46,10 +33,6 @@
                         <i class="bi bi-graph-up mr-3"></i>
                         Performance
                     </a>
-                    <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg">
-                        <i class="bi bi-book mr-3"></i>
-                        Subjects
-                    </a>
                 </nav>
             </div>
         </aside>
@@ -60,26 +43,15 @@
                 <!-- Profile Card -->
                 <div class="dashboard-card p-6 rounded-xl shadow-sm">
                     <div class="flex items-center space-x-4">
-                        <div class="w-20 h-20 rounded-full bg-gray-200 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=80" alt="Profile" class="w-full h-full object-cover">
-                        </div>
                         <div>
-                            <h3 class="text-xl font-semibold">John Smith</h3>
-                            <p class="text-gray-600">Class X-A</p>
-                            <p class="text-sm text-gray-500">Roll No: 42</p>
+                            <h3 class="text-xl font-semibold" id="name"></h3>
+                            <p class="text-gray-600" id="rolln"></p>
+                            <p class="text-sm text-gray-500" id="prn"></p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Performance Overview -->
-                <div class="dashboard-card p-6 rounded-xl shadow-sm">
-                    <h3 class="text-lg font-semibold mb-4">Overall Performance</h3>
-                    <div class="chart-container">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Attendance Overview -->
+                <!-- Attendance -->
                 <div class="dashboard-card p-6 rounded-xl shadow-sm">
                     <h3 class="text-lg font-semibold mb-4">Attendance</h3>
                     <div class="chart-container">
@@ -87,61 +59,34 @@
                     </div>
                 </div>
 
-                <!-- Subject Performance -->
+                <!-- Performance -->
                 <div class="dashboard-card p-6 rounded-xl shadow-sm col-span-1 md:col-span-2">
-                    <h3 class="text-lg font-semibold mb-4">Subject Performance</h3>
+                    <h3 class="text-lg font-semibold mb-4">Performance</h3>
                     <div class="chart-container h-64">
                         <canvas id="subjectsChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Schedule -->
-                <div class="dashboard-card p-6 rounded-xl shadow-sm">
-                    <h3 class="text-lg font-semibold mb-4">Today's Schedule</h3>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Mathematics</span>
-                            <span class="text-sm text-gray-500">09:00 AM</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Science</span>
-                            <span class="text-sm text-gray-500">10:30 AM</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">English</span>
-                            <span class="text-sm text-gray-500">12:00 PM</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-
     <script>
-        // Performance Chart
-        new Chart(document.getElementById('performanceChart'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Completed', 'Pending'],
-                datasets: [{
-                    data: [85, 15],
-                    backgroundColor: ['#4F46E5', '#E5E7EB']
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%'
-            }
-        });
-
+        const name=""
+        const roll=""
+        const prn=""
+        document.getElementById('name').innerHTML=name;
+        document.getElementById('rolln').innerHTML=roll;
+        document.getElementById('prn').innerHTML=prn;
         // Attendance Chart
+        const present= "20"
+        const total = "30"
+        const absent = total - present
+
         new Chart(document.getElementById('attendanceChart'), {
             type: 'doughnut',
             data: {
                 labels: ['Present', 'Absent'],
                 datasets: [{
-                    data: [92, 8],
+                    data: [present, absent],  // variables for attendence 
                     backgroundColor: ['#10B981', '#EF4444']
                 }]
             },
@@ -149,17 +94,17 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 cutout: '70%'
-            }
+           }
         });
 
-        // Subjects Performance Chart
+        // Performance Chart
         new Chart(document.getElementById('subjectsChart'), {
-            type: 'bar',
+             type: 'bar',
             data: {
-                labels: ['Mathematics', 'Science', 'English', 'History', 'Geography'],
+                labels: [sub1, sub2 , sub3, sub4 , sub5 , sub6 ,sub7 , sub8 , sub9 , sub10], //variables to fetch subjects
                 datasets: [{
                     label: 'Score',
-                    data: [85, 76, 92, 88, 79],
+                    data: [85, 76, 92, 88, 79], // var to fetch marks for each subject
                     backgroundColor: '#4F46E5',
                     borderRadius: 5
                 }]
@@ -176,5 +121,7 @@
             }
         });
     </script>
+
+   
 </body>
 </html>
