@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Teacher Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1rem 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar ul li ul {
+            display: none;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .sidebar ul li.active ul {
+            display: block;
+        }
+
+        .sidebar ul li ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .content {
+            margin-left: 230px;
+            padding: 2rem;
+            flex: 1;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        .button-group button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .teacher-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .teacher-list h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li><a href="adminDash.html">Dashboard</a></li>
+            <li class="has-submenu"><a href="#">Teacher</a>
+                <ul>
+                    <li><a href="createTeacher.html">Create Teacher</a></li>
+                    <li><a href="manageTeacher.html">Manage Teacher</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Student</a>
+                <ul>
+                    <li><a href="addStudent.html">Create Student</a></li>
+                    <li><a href="manageStudent.html">Manage Student</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Parent</a>
+                <ul>
+                    <li><a href="#">View</a></li>   
+                </ul>
+            </li>
+            <li><a href="#">Declare Result</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+    <div class="form-container">
+        <h2>Create Teacher</h2>
+        <div id="form">
+            <div class="form-group">
+                <label for="teacher-name">Teacher Name</label>
+                <input type="text" id="teacher-name" placeholder="Enter teacher's name">
+            </div>
+            <div class="form-group">
+                <label for="teacher-email">Email</label>
+                <input type="email" id="teacher-email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="teaching-year">Year Teaching</label>
+                <select id="teaching-year">
+                    <option value="">Select Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Enter subject">
+            </div>
+            <div class="form-group">
+                <label for="class-teacher">Class Teacher</label>
+                <input type="checkbox" id="class-teacher">
+                <span>Make this teacher a class teacher</span>
+            </div>
+            <div class="button-group">
+                <button onclick="addTeacher()">Add Teacher</button>
+            </div>
+        </div>
+    </div>
+    <div class="teacher-list">
+        <h3>Teacher List</h3>
+        <ul id="teacher-list"></ul>
+    </div>
+    </div>
+    <script>
+
+        // Sidebar submenu toggle
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', function (e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        function addTeacher() {
+            // Get form values
+            const name = document.getElementById('teacher-name').value;
+            const email = document.getElementById('teacher-email').value;
+            const year = document.getElementById('teaching-year').value;
+            const subject = document.getElementById('subject').value;
+            const isClassTeacher = document.getElementById('class-teacher').checked;
+
+            // Validate inputs
+            if (!name || !email || !year || !subject) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            // Create list item
+            const teacherList = document.getElementById('teacher-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${name} (${email}) - Year: ${year}, Subject: ${subject}`;
+
+            if (isClassTeacher) {
+                listItem.textContent += ' [Class Teacher]';
+            }
+
+            // Append to list
+            teacherList.appendChild(listItem);
+
+            // Clear form
+            document.getElementById('teacher-name').value = '';
+            document.getElementById('teacher-email').value = '';
+            document.getElementById('teaching-year').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('class-teacher').checked = false;
+        }
+    </script>
+</body>
+</html>

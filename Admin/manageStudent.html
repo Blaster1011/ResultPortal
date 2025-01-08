@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1rem 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar ul li ul {
+            display: none;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .sidebar ul li.active ul {
+            display: block;
+        }
+
+        .sidebar ul li ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .content {
+            margin-left: 230px;
+            padding: 2rem;
+            flex: 1;
+          
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buttons .update-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .buttons .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li><a href="adminDash.html">Dashboard</a></li>
+            <li class="has-submenu"><a href="#">Teacher</a>
+                <ul>
+                    <li><a href="createTeacher.html">Create Teacher</a></li>
+                    <li><a href="manageTeacher.html">Manage Teacher</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Student</a>
+                <ul>
+                    <li><a href="addStudent.html">Create Student</a></li>
+                    <li><a href="manageStudent.html">Manage Student</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Parent</a>
+                <ul>
+                    <li><a href="#">View</a></li>   
+                </ul>
+            </li>
+            <li><a href="#">Declare Result</a></li>
+        </ul>
+    </div>
+     
+    <div class="content">
+        
+    <div class="container">
+        <h1>Manage Student</h1>
+        <form id="manageStudentForm">
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" name="studentName" placeholder="Enter student name" required>
+            </div>
+            <div class="form-group">
+                <label for="rollNumber">Roll Number</label>
+                <input type="text" id="rollNumber" name="rollNumber" placeholder="Enter roll number" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year" name="year" required>
+                    <option value="">Select Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester" name="semester" required>
+                    <option value="">Select Semester</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <button type="button" class="update-btn" onclick="updateStudent()">Update Student</button>
+                <button type="button" class="delete-btn" onclick="deleteStudent()">Delete Student</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <script>
+        // Sidebar submenu toggle
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', function (e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        function updateStudent() {
+            const form = document.getElementById('manageStudentForm');
+
+            if (!form.checkValidity()) {
+                alert('Please fill all the fields correctly!');
+                return;
+            }
+
+            // Collect form data
+            const studentData = {
+                studentName: form.studentName.value,
+                rollNumber: form.rollNumber.value,
+                year: form.year.value,
+                semester: form.semester.value,
+            };
+
+            console.log('Student Data Updated:', studentData);
+            alert('Student details updated successfully!');
+
+            form.reset();
+        }
+
+        function deleteStudent() {
+            const form = document.getElementById('manageStudentForm');
+
+            if (!form.rollNumber.value) {
+                alert('Please provide a roll number to delete the student.');
+                return;
+            }
+
+            const rollNumber = form.rollNumber.value;
+            console.log('Student with Roll Number', rollNumber, 'Deleted');
+            alert(`Student with Roll Number ${rollNumber} deleted successfully!`);
+
+            form.reset();
+        }
+    </script>
+</body>
+</html>

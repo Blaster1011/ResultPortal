@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1rem 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar ul li ul {
+            display: none;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .sidebar ul li.active ul {
+            display: block;
+        }
+
+        .sidebar ul li ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .content {
+            margin-left: 230px;
+            padding: 2rem;
+            flex: 1;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0px ;
+            padding: 0px;
+            background-color: #fff;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: fixed;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: none;
+            height: 80px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buttons .add-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .buttons .reset-btn {
+            background-color: #ffc107;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li><a href="adminDash.html">Dashboard</a></li>
+            <li class="has-submenu"><a href="#">Teacher</a>
+                <ul>
+                    <li><a href="createTeacher.html">Create Teacher</a></li>
+                    <li><a href="manageTeacher.html">Manage Teacher</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Student</a>
+                <ul>
+                    <li><a href="addStudent.html">Create Student</a></li>
+                    <li><a href="manageStudent.html">Manage Student</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Parent</a>
+                <ul>
+                    <li><a href="#">View</a></li>   
+                </ul>
+            </li>
+            <li><a href="#">Declare Result</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="header">Student Registration Form</div>
+    <br>
+    <br>
+    <div class="container">
+        <form id="studentForm">
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" name="studentName" placeholder="Enter student name" required>
+            </div>
+            <div class="form-group">
+                <label for="studentPhone">Student Phone Number</label>
+                <input type="tel" id="studentPhone" name="studentPhone" placeholder="Enter student phone number" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="parentName">Parent Name</label>
+                <input type="text" id="parentName" name="parentName" placeholder="Enter parent name" required>
+            </div>
+            <div class="form-group">
+                <label for="parentPhone">Parent Phone Number</label>
+                <input type="tel" id="parentPhone" name="parentPhone" placeholder="Enter parent phone number" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="rollNumber">Roll Number</label>
+                <input type="text" id="rollNumber" name="rollNumber" placeholder="Enter roll number" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year" name="year" required>
+                    <option value="">Select Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester" name="semester" required>
+                    <option value="">Select Semester</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            
+            <div class="buttons">
+                <button type="button" class="add-btn" onclick="addStudent()">Add Student</button>
+                <button type="reset" class="reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <script>
+        
+        // Sidebar submenu toggle
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', function (e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        function addStudent() {
+            const form = document.getElementById('studentForm');
+
+            if (!form.checkValidity()) {
+                alert('Please fill all the fields correctly!');
+                return;
+            }
+
+            // Collect form data
+            const studentData = {
+                studentName: form.studentName.value,
+                studentPhone: form.studentPhone.value,
+                parentName: form.parentName.value,
+                parentPhone: form.parentPhone.value,
+                gender: form.gender.value,
+                email: form.email.value,
+                rollNumber: form.rollNumber.value,
+                year: form.year.value,
+                semester: form.semester.value,
+                address: form.address.value,
+            };
+
+            console.log('Student Data Saved:', studentData);
+            alert('Student details saved successfully!');
+
+            // Reset the form for adding a new student
+            form.reset();
+        }
+    </script>
+</body>
+</html>

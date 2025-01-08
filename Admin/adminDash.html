@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 1rem 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar ul li ul {
+            display: none;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .sidebar ul li.active ul {
+            display: block;
+        }
+
+        .sidebar ul li ul li {
+            margin: 0.5rem 0;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li><a href="landing.html">Home</a></li>
+            <li><a href="adminDash.html">Dashboard</a></li>
+            <li class="has-submenu"><a href="#">Teacher</a>
+                <ul>
+                    <li><a href="createTeacher.html">Create Teacher</a></li>
+                    <li><a href="manageTeacher.html">Manage Teacher</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Student</a>
+                <ul>
+                    <li><a href="addStudent.html">Create Student</a></li>
+                    <li><a href="manageStudent.html">Manage Student</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu"><a href="#">Parent</a>
+                <ul>
+                    <li><a href="#">View</a></li>   
+                </ul>
+            </li>
+            <li><a href="#">Declare Result</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="header">Welcome to Admin Dashboard</div>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3>Teacher</h3>
+                <a href="createTeacher.html">Create Teacher</a>
+                <br>
+                <a href="manageTeacher.html">Manage Teacher</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📘</div>
+                <h3>Student</h3>
+                <a href="addStudent.html">Create Student</a>
+                <br>
+                <a href="manageStudent.html">Manage Student</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">❤️</div>
+                <h3>Parent</h3>
+                <a href="#">view Parents</a>
+            </div>
+        </div>
+
+        <div class="footer">2024 Student Tracking System. All Rights Reserved.</div>
+    </div>
+
+    <script>
+        // Sidebar submenu toggle
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', function (e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Example JavaScript to enhance interactivity
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert(`Navigating to ${card.querySelector('h3').textContent} section`);
+            });
+        });
+    </script>
+</body>
+</html>

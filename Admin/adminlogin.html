@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="form-container">
+      <h2>Admin Login</h2>
+      
+      <div id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter Username" required><br><br>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter Password" required><br><br>
+        
+        <button onclick="login()">Login</button><br><br>
+        
+        <a href="#" onclick="showForgotPassword()">Forgot Password?</a><br>
+        
+        <p id="loginError" style="color: red;"></p>
+      </div>
+
+      <div id="forgotPasswordForm" style="display: none;">
+        <h3>Forgot Password</h3>
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" placeholder="Enter New Password"><br><br>
+        
+        <button onclick="resetPassword()">Reset Password</button><br><br>
+        
+        <a href="#" onclick="showLoginForm()">Back to Login</a><br>
+        
+        <p id="resetError" style="color: red;"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
