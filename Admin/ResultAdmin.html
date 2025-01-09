@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Portal</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="Result.js"></script>
+    <link href="Result.css" rel="stylesheet">
+
+
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- Admin Controls -->
+        <div class="mb-6 flex flex-wrap gap-4 no-print">
+            <button onclick="toggleEditMode()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                <i class="bi bi-pencil"></i> Toggle Edit Mode
+            </button>
+            <button onclick="generatePDF()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                <i class="bi bi-file-pdf"></i> Export PDF
+            </button>
+            <button onclick="window.print()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                <i class="bi bi-printer"></i> Print
+            </button>
+            <input type="file" id="csvInput" accept=".csv" class="hidden" onchange="importCSV(event)">
+            <button onclick="document.getElementById('csvInput').click()" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                <i class="bi bi-upload"></i> Import CSV
+            </button>
+        </div>
+
+        <!-- Result Content -->
+        <div id="resultContent" class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold mb-2">
+                    <span class="editable" data-field="examType">Summer</span> 
+                    Semester Examinations 
+                    <span class="editable" data-field="examYear">2023</span> Result
+                </h1>
+                <h2 class="text-lg mb-2">
+                    Course: <span class="editable" data-field="course">18248 - Information Technology</span> | 
+                    Year: <span class="editable" data-field="year">1</span> | 
+                    Semester: <span class="editable" data-field="semester">2</span>
+                </h2>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <p class="text-gray-600">Enrollment No: <span class="editable" data-field="enrollmentNo">223040324601B</span></p>
+                    <p class="text-gray-600">Student Name: <span class="editable" data-field="studentName">PALLAV MAHENDRA GHATVAL</span></p>
+                </div>
+            </div>
+
+            <div class="table-container overflow-x-auto">
+                <table class="w-full text-sm border-collapse mb-6">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border p-2">Sr No</th>
+                            <th class="border p-2">Subject Code</th>
+                            <th class="border p-2">Subject Name</th>
+                            <th class="border p-2">Credits</th>
+                            <th class="border p-2">Max Marks</th>
+                            <th class="border p-2">CA1</th>
+                            <th class="border p-2">CA2</th>
+                            <th class="border p-2">MTE</th>
+                            <th class="border p-2">ETE</th>
+                            <th class="border p-2">TW</th>
+                            <th class="border p-2">PR</th>
+                            <th class="border p-2">PR_OR</th>
+                            <th class="border p-2">Grace</th>
+                            <th class="border p-2">Total</th>
+                            <th class="border p-2">Grade</th>
+                            <th class="border p-2">Grade Points</th>
+                            <th class="border p-2">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Current Semester Performance</h3>
+                    <p>Credits Registered: <span class="editable" data-field="creditsRegistered">32</span></p>
+                    <p>Credits Completed: <span class="editable" data-field="creditsCompleted">30</span></p>
+                    <p>SGPA: <span class="editable" data-field="sgpa">8.48</span></p>
+                </div>
+                <div class="border p-4 rounded">
+                    <h3 class="font-bold mb-2">Yearly Performance</h3>
+                    <p>Total Credits: <span class="editable" data-field="totalCredits">60</span></p>
+                    <p>GPA: <span class="editable" data-field="gpa">8.92</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

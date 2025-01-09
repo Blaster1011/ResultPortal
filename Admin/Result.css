@@ -1,0 +1,11 @@
+@media print {
+    .no-print { display: none; }
+}
+.editable:hover {
+    background-color: #f0f9ff;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .table-container { overflow-x: auto; }
+    .table-container table { font-size: 0.75rem; }
+}
