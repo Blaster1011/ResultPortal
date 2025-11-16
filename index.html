@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Freelance Job Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a href="#top" class="logo">Freelance<span>Flow</span></a>
+        <nav class="nav" aria-label="Primary">
+          <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#cta" class="btn btn-sm btn-primary">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container grid-2">
+          <div class="hero-copy">
+            <h1 id="hero-heading">Manage your freelance jobs in one place</h1>
+            <p class="subtitle">Proposals, contracts, tasks, invoices, and payments — streamlined into a simple, powerful workflow.</p>
+            <div class="hero-cta">
+              <a href="#cta" class="btn btn-primary btn-lg">Start free trial</a>
+              <a href="#features" class="btn btn-ghost btn-lg">See features</a>
+            </div>
+            <div class="hero-trust">
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=500&auto=format&fit=crop" alt="Happy freelancers" />
+              <span>Trusted by 10,000+ freelancers</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="card-stack">
+              <div class="ui-card invoice">
+                <div class="ui-card-header">
+                  <span>Invoice #1048</span>
+                  <strong>$1,250</strong>
+                </div>
+                <div class="ui-card-body">
+                  <div class="row"><span>Client</span><span>Acme Co.</span></div>
+                  <div class="row"><span>Status</span><span class="badge paid">Paid</span></div>
+                </div>
+              </div>
+              <div class="ui-card task">
+                <div class="ui-card-header">
+                  <span>Today</span>
+                  <strong>3 Tasks</strong>
+                </div>
+                <ul class="task-list">
+                  <li><input type="checkbox" checked aria-label="Task complete" /> Send proposal</li>
+                  <li><input type="checkbox" /> Draft contract</li>
+                  <li><input type="checkbox" /> Submit invoice</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="blur-blob blob-1" aria-hidden="true"></div>
+        <div class="blur-blob blob-2" aria-hidden="true"></div>
+      </section>
+
+      <section id="features" class="section features" aria-labelledby="features-heading">
+        <div class="container">
+          <h2 id="features-heading">Everything you need to run your business</h2>
+          <p class="section-subtitle">Replace spreadsheets and scattered tools with a unified system.</p>
+          <div class="features-grid">
+            <article class="feature">
+              <div class="icon i-proposals" aria-hidden="true"></div>
+              <h3>Proposals & Contracts</h3>
+              <p>Create branded proposals and e-sign contracts in minutes.</p>
+            </article>
+            <article class="feature">
+              <div class="icon i-tasks" aria-hidden="true"></div>
+              <h3>Tasks & Projects</h3>
+              <p>Plan, track, and deliver with Kanban and calendar views.</p>
+            </article>
+            <article class="feature">
+              <div class="icon i-invoices" aria-hidden="true"></div>
+              <h3>Invoices & Payments</h3>
+              <p>Get paid fast with smart invoices and automatic reminders.</p>
+            </article>
+            <article class="feature">
+              <div class="icon i-clients" aria-hidden="true"></div>
+              <h3>Client CRM</h3>
+              <p>Keep contacts, notes, and files organized per client.</p>
+            </article>
+            <article class="feature">
+              <div class="icon i-time" aria-hidden="true"></div>
+              <h3>Time Tracking</h3>
+              <p>Log billable hours with a one-click start/stop timer.</p>
+            </article>
+            <article class="feature">
+              <div class="icon i-analytics" aria-hidden="true"></div>
+              <h3>Insights & Reports</h3>
+              <p>Understand revenue, pipeline, and utilization at a glance.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="section how" aria-labelledby="how-heading">
+        <div class="container">
+          <h2 id="how-heading">From lead to paid — in a smooth flow</h2>
+          <ol class="steps">
+            <li>
+              <span class="num">1</span>
+              Capture a lead and send a tailored proposal
+            </li>
+            <li>
+              <span class="num">2</span>
+              E-sign the contract and kick off the project
+            </li>
+            <li>
+              <span class="num">3</span>
+              Track tasks and time, then invoice in one click
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="pricing" class="section pricing" aria-labelledby="pricing-heading">
+        <div class="container">
+          <h2 id="pricing-heading">Simple pricing</h2>
+          <p class="section-subtitle">Start free. Upgrade when you grow.</p>
+          <div class="pricing-grid">
+            <article class="plan">
+              <h3>Starter</h3>
+              <p class="price"><span>$</span>0<span class="per">/mo</span></p>
+              <ul class="plan-features">
+                <li>Up to 3 clients</li>
+                <li>Invoices & payments</li>
+                <li>Email support</li>
+              </ul>
+              <a href="#cta" class="btn btn-secondary btn-block">Get started</a>
+            </article>
+            <article class="plan plan-featured" aria-label="Most popular plan">
+              <div class="badge">Most Popular</div>
+              <h3>Pro</h3>
+              <p class="price"><span>$</span>19<span class="per">/mo</span></p>
+              <ul class="plan-features">
+                <li>Unlimited clients</li>
+                <li>Contracts & proposals</li>
+                <li>Priority support</li>
+              </ul>
+              <a href="#cta" class="btn btn-primary btn-block">Start free trial</a>
+            </article>
+            <article class="plan">
+              <h3>Teams</h3>
+              <p class="price"><span>$</span>49<span class="per">/mo</span></p>
+              <ul class="plan-features">
+                <li>Team collaboration</li>
+                <li>Advanced analytics</li>
+                <li>Dedicated success manager</li>
+              </ul>
+              <a href="#cta" class="btn btn-secondary btn-block">Contact sales</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq" aria-labelledby="faq-heading">
+        <div class="container">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <div class="accordion" role="tablist">
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">Can I cancel anytime?</button>
+              <div class="accordion-panel"><p>Yes, you can cancel or change plans at any time from your account settings.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">Do you offer discounts?</button>
+              <div class="accordion-panel"><p>We offer annual billing with 2 months free as well as student discounts.</p></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">Is my data secure?</button>
+              <div class="accordion-panel"><p>We use industry best practices, encryption at rest and in transit.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="section cta" aria-labelledby="cta-heading">
+        <div class="container grid-2">
+          <div>
+            <h2 id="cta-heading">Ready to simplify your freelance business?</h2>
+            <p>Start your 14-day free trial. No credit card required.</p>
+          </div>
+          <form class="cta-form" onsubmit="return false" aria-label="Get started">
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            <button class="btn btn-primary" type="submit">Get started</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Footer">
+      <div class="container footer-grid">
+        <a href="#top" class="logo">Freelance<span>Flow</span></a>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+        <p class="copyright">© <span id="year"></span> FreelanceFlow. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
